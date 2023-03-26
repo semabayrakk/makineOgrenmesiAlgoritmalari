@@ -8,3 +8,24 @@ Kullanılan veri setindeki veriler Portekiz bankacılık kurumunun pazarlama kam
 
 -Makine öğrenmesi algoritmalarının çoğu sayısal veriler ile çalışmaktadır. Bu sebele veri setinde bulunan kategorik veriler, sayısal verilere çevirilmelidir. Verilerin tipini öğrenmek için `bankaVeriSeti.dtypes` metodu kullanılmıştır.
 
+![Ekran Alıntısı](https://user-images.githubusercontent.com/117931965/227781543-23d71640-8868-4b6a-800d-4c4b4ef2bade.PNG)
+
+-Kategorik değerlerin sayısal değerlere çevirilmesi için "dummy" değişkeni kullanılmıştır. Bu işlem tüm kategorik değerler için uygulanmıştır.
+
+```
+def encode(x):
+	if x == "yes": 
+	return 1 
+	elif x == "no": 
+	return 0 
+	else: 
+	return 2
+bankaVeriSeti["deposit_encode"] = bankaVeriSeti.apply(lambda x: encode(x["deposit"]), axis 
+bankaVeriSeti = pd.get_dummies(bankaVeriSeti ,prefix = "deposit" 
+                                           ,columns = ["deposit"] 
+                                           ,drop_first = True)
+```  
+Veri setinin son hali aşağıda verilen görselde oludğu gibi tamamen sayıssal hale getirilmiştir.
+
+![Ekran Alıntısı](https://user-images.githubusercontent.com/117931965/227782039-3ca47a75-37d9-450f-b5c3-99afbe82a1e1.PNG)
+
