@@ -29,3 +29,27 @@ Veri setinin son hali aşağıda verilen görselde oludğu gibi tamamen sayıssa
 
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/117931965/227782039-3ca47a75-37d9-450f-b5c3-99afbe82a1e1.PNG)
 
+Veri seti biraz daha incelenmiştir. Ve aşağıda görüldüğü gibi bağımlı değişkenin değerlerinin eşit bir şekilde dağılmadığı görülmüştür. Bu da sınıflandırma için doğru bir veri seti olmadığını gösterir. Çünkü abone olmama yüzdesi çok yüksek. Sınıflandırma zaten hepsine hayır dese bile yüksek başarı oranı elde edilir.
+
+```
+count_no_sub = len(bankaVeriSeti[bankaVeriSeti['default_encode']==0])
+count_sub = len(bankaVeriSeti[bankaVeriSeti['default_encode']==1])
+pct_of_no_sub = count_no_sub/(count_no_sub+count_sub) 
+print("abonelik olmamasının yüzdesi ", pct_of_no_sub*100) 
+pct_of_sub = count_sub/(count_no_sub+count_sub) 
+print("abonelik yüzdesi", pct_of_sub*100)
+```
+
+![image](https://user-images.githubusercontent.com/117931965/229936545-0995351c-0fce-431e-985d-80a2e31074cf.png)
+
+Son olarak tüm sınıflandırma yöntemlerinde kullanılmak üzere veri seti “test ve train” olacak şeklinde bölünmüştür. X değişkeni bağımsız, y değişkeni ise bağımlı değişkenleri içermektedir.
+
+```
+x=bankaVeriSeti.drop("default_encode", axis=1)
+y=bankaVeriSeti["default_encode"]
+```
+
+Ardından x ve y değişkenleri test ve train olmak üzere %33’e %77 oranında bölünüyor.
+`x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.33, random_state=0)`
+
+
