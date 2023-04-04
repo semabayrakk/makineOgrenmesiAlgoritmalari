@@ -52,4 +52,18 @@ y=bankaVeriSeti["default_encode"]
 Ardından x ve y değişkenleri test ve train olmak üzere %33’e %77 oranında bölünüyor.
 `x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.33, random_state=0)`
 
+**1. Lojistik Regresyon**
+
+Lojistik regresyon sınıflandırma algoritmalarından bir tanesidir. Veri setimizdeki default değerini evet mi, hayır mı? Olduğunu bize gösterecektir. Sınıflandırma yapmak için sigmoid fonksiyonu kullanılır. Sınıflandırma bağımlı ve bağımsız değişken arasında yapılır.
+
+-x_train ve y_train bilgileri fit edilir. Ve yeni bir bir p_pred seti oluşturulur.
+
+```
+logr=LogisticRegression(random_state=0)
+logr.fit(x_train,y_train) 
+y_pred_logr=logr.predict(x_test)
+```
+
+
+
 
